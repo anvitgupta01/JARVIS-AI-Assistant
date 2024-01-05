@@ -6,6 +6,9 @@ import os
 import webbrowser as wb
 import random
 import subprocess
+from validateEmail import validate
+from NetworkSpeed import speedTest
+from GenerateStrongPassword import passGen
 
 try:
     from googlesearch import search
@@ -154,6 +157,26 @@ def command():
                 query = query.replace("search"," ")
                 for j in search(query, tld="co.in", num=2, stop=2, pause=2):
                     wb.open(j)
+            
+            elif ("validate email" in query) or ("validate the email" in query) :
+                engine.setProperty('rate',190)
+                speak("Enter the email to validate ")
+                email = input("Enter the email to validate ")  
+                speak(validate(email))
+                engine.setProperty('rate',230)
+
+            elif ("network speed" in query) or ("test speed" in query) or ("test network speed" in query) :
+                engine.setProperty('rate',190)
+                speak("Checking please wait...")
+                speedTest()
+                engine.setProperty('rate',230)
+
+            elif ("generate strong password" in query) or ("generate password" in query) :
+                print(f"The password is {passGen()}")
+
+            elif ("generate qrcode" in query) or ("qr" in query) :
+                subprocess.run(['python','qrcodeGen.py'])
+ 
         else :
             continue
         query = ""
