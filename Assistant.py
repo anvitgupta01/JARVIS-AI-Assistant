@@ -78,7 +78,7 @@ def listen():
         except Exception as e:
             engine.setProperty('rate',190)
             speak("Network Request error")
-            speak("Please restart again")
+            speak("Please speak again")
             engine.setProperty('rate',230)
             return ""
         return query
@@ -160,7 +160,7 @@ def command():
                 speak("Your search has been started...")
                 for j in search(query, tld="co.in", num=2, stop=2, pause=2):
                     wb.open(j)
-                speak("Search completed sir...")
+                speak("Search has been completed...")
             
             elif ("validate email" in query) or ("validate the email" in query) :
                 engine.setProperty('rate',190)
@@ -217,7 +217,6 @@ def command():
                 merge()
                 speak("Merging has been completed...")
                 engine.setProperty('rate',230)
-
         else :
             continue
         query = ""
