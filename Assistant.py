@@ -10,6 +10,7 @@ from validateEmail import validate
 from NetworkSpeed import speedTest
 from GenerateStrongPassword import passGen
 from youtubeVideoDownload import downloadVideo
+from WorkWithPDF import merge,decrypt,encrypt
 
 try:
     from googlesearch import search
@@ -156,20 +157,23 @@ def command():
             
             elif ("search" in query) :
                 query = query.replace("search"," ")
+                speak("Your search has been started...")
                 for j in search(query, tld="co.in", num=2, stop=2, pause=2):
                     wb.open(j)
+                speak("Search completed sir...")
             
             elif ("validate email" in query) or ("validate the email" in query) :
                 engine.setProperty('rate',190)
                 speak("Enter the email to validate ")
-                email = input("Enter the email to validate ")  
+                email = input("Enter the email to validate ")
                 speak(validate(email))
                 engine.setProperty('rate',230)
 
             elif ("network speed" in query) or ("test speed" in query) or ("test network speed" in query) :
                 engine.setProperty('rate',190)
-                speak("Checking please wait...")
+                speak("Starting SpeedTest ...")
                 speedTest()
+                speak("SpeedTest has been completed... View upload and download speed in output file... ")
                 engine.setProperty('rate',230)
 
             elif ("generate strong password" in query) or ("generate password" in query) :
@@ -188,11 +192,32 @@ def command():
 
             elif ("download youtube video" in query) or ("download video" in query):
                 engine.setProperty('rate',190)
-                speak("Staring download")
+                speak("Starting download")
                 downloadVideo()
                 speak("Video... Downloaded")
                 engine.setProperty('rate',230)
- 
+
+            elif ("encrypt file" in query) or ("encrypt pdf file" in query):
+                engine.setProperty('rate',190)
+                speak("Starting encryption...")
+                encrypt()
+                speak("Encryption has been completed...")
+                engine.setProperty('rate',230)
+        
+            elif ("decrypt file" in query) or ("decrypt pdf file" in query):
+                engine.setProperty('rate',190)
+                speak("Starting decryption...")
+                decrypt()
+                speak("Decryption has been completed...")
+                engine.setProperty('rate',230)
+
+            elif ("merge files" in query) or ("merge pdf files" in query):
+                engine.setProperty('rate',190)
+                speak("Starting Merging ...")
+                merge()
+                speak("Merging has been completed...")
+                engine.setProperty('rate',230)
+
         else :
             continue
         query = ""
