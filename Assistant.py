@@ -9,6 +9,7 @@ import subprocess
 from validateEmail import validate
 from NetworkSpeed import speedTest
 from GenerateStrongPassword import passGen
+from youtubeVideoDownload import downloadVideo
 
 try:
     from googlesearch import search
@@ -172,10 +173,25 @@ def command():
                 engine.setProperty('rate',230)
 
             elif ("generate strong password" in query) or ("generate password" in query) :
+                engine.setProperty('rate',190)
+                speak("Starting strong password generation")
                 print(f"The password is {passGen()}")
+                speak("Password generation complete ")
+                engine.setProperty('rate',230)
 
             elif ("generate qrcode" in query) or ("qr" in query) :
+                engine.setProperty('rate',190)
+                speak("Starting QR generation")
                 subprocess.run(['python','qrcodeGen.py'])
+                speak("QR Generated successfully ")
+                engine.setProperty('rate',230)
+
+            elif ("download youtube video" in query) or ("download video" in query):
+                engine.setProperty('rate',190)
+                speak("Staring download")
+                downloadVideo()
+                speak("Video... Downloaded")
+                engine.setProperty('rate',230)
  
         else :
             continue
