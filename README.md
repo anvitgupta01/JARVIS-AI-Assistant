@@ -39,8 +39,9 @@ It starts by Greeting you with Good Morning, Afternoon or Evening according to t
 
 ### Developing JARVIS : Moving through the source code
 
-a. The source code starts with *["Assistant.py"](https://github.com/anvitgupta01/Jarvis-AI-Assistant/blob/master/Assistant.py)* which contains actual implemenation logic for the software. Different main sections of the program are highighted below with some explanation on how to use and what has been done.
+The source code starts with *["Assistant.py"](https://github.com/anvitgupta01/Jarvis-AI-Assistant/blob/master/Assistant.py)* which contains actual implemenation logic for the software. Different main sections of the program are highighted below with some explanation on how to use and what has been done.
 
+**a. Include section -**
 ```
 import datetime    
 import pyttsx3
@@ -61,24 +62,25 @@ The important highlight for the libraries are given below :
 
 1. Standard built-in Modules - These are those modules which came with python interpreter and present in python standard library. These can be used direclty without installing once you import them. JARVIS includes the below standard modules :
    
-- datetime - A standard module in python used to work with date and time.
-- os - One of the most important module of python standard library deals with interacting and performing the tasks which can only be performed by the OS of the system. 'os' module will indirectly interact with the OS.
-- webbrowser - To open any application using a browser, we need a python module called 'webbrowser'. This is present in python standard library and not need to explicitly installed.
-- random - To generate any random number, python uses functions or routines present in 'random' module. This is a standard library module.
-- subprocess - A python standard library module used to run other application files from the main python files. With the help of this module, python somewhat implements **separation of concern**.
+   - datetime - A standard module in python used to work with date and time.
+   - os - One of the most important module of python standard library deals with interacting and performing the tasks which can only be performed by the OS of the system. 'os' module will indirectly interact with the OS.
+   - webbrowser - To open any application using a browser, we need a python module called 'webbrowser'. This is present in python standard library and not need to explicitly installed.
+   - random - To generate any random number, python uses functions or routines present in 'random' module. This is a standard library module.
+   - subprocess - A python standard library module used to run other application files from the main python files. With the help of this module, python somewhat implements **separation of concern**.
 
 2. External Modules - Modules that are not part of python standard library must have to installed manually by using 'pip' which is the package manager of python.
      ```
      pip install <___Module_name___>
      ```
    JARVIS uses the following external modules :
- - pyttsx3 - The module used to implement text to speech conversion in python
- - speech_recognition - The module used to recognise the speech of the user. This module will also use the microphone of our system. To use the microphone, python uses another module called 'pyaudio', which also has to be installed manually with the above written command. With PyAudio, you can easily use Python to play and record audio on a variety of platforms, such as GNU/Linux, Microsoft Windows, and Apple macOS.
- - wikipedia - To get results from wikipedia, 'wikipedia' need to be installed in the python.
+    - pyttsx3 - The module used to implement text to speech conversion in python
+    - speech_recognition - The module used to recognise the speech of the user. This module will also use the microphone of our system. To use the microphone, python uses another module called 'pyaudio', which also has to be installed manually with the above written command. With PyAudio, you can easily use Python to play and record audio on a variety of platforms, such as GNU/Linux, Microsoft Windows, and Apple macOS.
+    - wikipedia - To get results from wikipedia, 'wikipedia' need to be installed in the python.
 
 3. User-defined python files - These are also python program files which are used to implement more functionality to the Jarvis. These will be discussed later on.
 
 
+**b. Initialization section -**
 ```
 try:
     from googlesearch import search
@@ -105,7 +107,7 @@ The above program segment does intialization of various resources required in ot
     - 'rate' defines the speed of speaking by the program. It can be changed at any time in the program. The default value has been set to 230.
 - Recogniser and Microphone are enabled to allow human to communicate with JARVIS.
 
-
+**c. Main function of the program -**
   ```
   if __name__ == "__main__":
     welcome()
@@ -115,6 +117,7 @@ The main function calls two functions :
       - welcome - Greets the user when the program has been started.
       - command - This has the actual implementation logic of the Jarvis. By running this function, Jarvis is now able to take commands from the user and then process it accordingly.
 
+**d. Other utility functions -**
 ```
 def speak(audio):
     engine.say(audio)
@@ -138,7 +141,48 @@ def listen():
         return query
 ```
 
+'welcome' and 'command' function uses the above two functions to implement interaction with the user.
+      - speak - This function uses 'pyttsx3' module installed before in order for the program to speak to user.
+      - listen - This function uses 'speech_recognition' and 'pyaudio' to listen to user voice and then give the recognised voice to the command function, in order to process it and act accordingly.
 
+
+**e. Utility python Files -**
+
+1. <ins>validateEmail.py</ins> - The python file uses python standard library module, named 're'. The module has the implementation of regexes in python. Regexes are being used to validate for the email provided by the user. The regex used to validate email is :
+   ```
+   regex = r'\b[A-Za-z0-9._/%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+   ```
+2. <ins>NetworkSpeed.py</ins> - The python file uses external module which needed to be installed by the below command. This test the upload and the download speed for the network.
+   ```
+   pip install speedtest-cli
+   ```
+3. <ins>GenerateStrongPassword.py</ins> - This is a way basic code which uses strings and arrays in order for generating a password of desired length. Perfoming shuffling after every choose from the list will guarantee that it will be too strong password.
+   ```
+   random.shuffle(temp_pass_list)
+   ```
+4. <ins>youtubeVideoDownload.py</ins> - Downloading any Youtube video offline by python requires use of external library of python called 'pytube'. You can also get many properties of the video, two of the properties are being implemented in the program code itself as title and views of the Youtube video.
+   ```
+   pip install pytube
+   ```
+   ```
+    print("Title of your video is " , yt.title)
+    print("Views of your video is ", yt.views)
+   ```
+5. <ins>WorkWithPDF.py</ins> - The python file supports easy encryption, decryption and merging of pdf files by using external python module called PyPDF2. The functions to work requires the use of file handling and file path input in order to bring the operation.
+   ```
+   pip3 install PyPDF2
+   ``` 
+
+6. <ins>qrcodeGen.py</ins> - This python file provides the facility for QR generation for any website link or any random string or text. It uses the 'qrcode' external module of python library. The QR generated can be saved in any format including .png,.jpg,.jpeg, etc. It can not only be generated in black and white but in any background and foreground colour.
+   ```
+   pip install qrcode
+   ```
+   ```
+   img = qr.make_image(fill_color = 'black', back_color = 'white')
+   img.save(f'{image}')
+   ```
+ 
+All the modules that are need to be installed for the program are listed in 'requirements.txt' file. This file can be generated by running the following command: ```pip freeze > requirements.txt ```. By this command, all the python modules installed under this environment will be listed in the file automatically.
 
 
 **Note that this AI will not provide the complete automation of the device and always some manual intervention will be required for giving required input to the AI like any website link, file path, passwords etc, also scheduling have to be done in advance for running it at different times. You can edit it according to your requirements, add more functions, remove which are not required.** 
