@@ -1,6 +1,6 @@
 ### What is Jarvis AI Assistant? 
 
-[<a href="https://github.com/anvitgupta01">anvitgupta01</a>](https://github.com/anvitgupta01/Jarvis-AI-Assistant/)
+[<a href="https://github.com/anvitgupta01">anvitgupta01</a>](https://github.com/anvitgupta01/)
 JARVIS is a python program which is aimed at automating and implementing various routines in the software. This can then be scheduled to run always on the system device. The AI will then be active always to accept user tasks. This AI can perform various routines like search on internet and provide the results on the browser, encrypt, decrypt and merge pdf files, download any video from youtube offline, generate password for you, test the network speed you are connected with and even shutdown, restart or lock the device for you.
 
 ### Overview
@@ -188,7 +188,7 @@ All the modules that are need to be installed for the program are listed in 'req
 **Note that this AI will not provide the complete automation of the device and always some manual intervention will be required for giving required input to the AI like any website link, file path, passwords etc, also scheduling have to be done in advance for running it at different times. You can edit it according to your requirements, add more functions, remove which are not required.** 
 
 ### Management and Contribution
-   [<img src="https://github.com/anvitgupta01.png" width="60px;"/><br />](https://github.com/anvitgupta01/Jarvis-AI-Assistant/)
+   [<img src="https://github.com/anvitgupta01.png" width="60px;"/><br />](https://github.com/anvitgupta01/)
 
 This repository is managed and contributed by me only. The Jarvis may get many updates and changes in the future with improvement in design and addition of more functionalities. 
 
