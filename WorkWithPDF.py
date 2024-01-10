@@ -42,4 +42,3 @@ def merge():
     with open("FILES_Merged.pdf","wb") as f:
         merger.write(f)
     return
-merge()

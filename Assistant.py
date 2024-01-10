@@ -217,6 +217,7 @@ def command():
                 merge()
                 speak("Merging has been completed...")
                 engine.setProperty('rate',230)
+            
             elif ("desktop clean" in query):
                 engine.setProperty('rate',190)
                 speak("Started cleaning...")
