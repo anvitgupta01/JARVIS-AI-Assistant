@@ -8,7 +8,7 @@ import random
 import subprocess
 from validateEmail import validate
 from NetworkSpeed import speedTest
-from GenerateStrongPassword import passGen
+from GenerateStrongPassword import *
 from youtubeVideoDownload import downloadVideo
 from WorkWithPDF import merge,decrypt,encrypt
 
@@ -167,6 +167,13 @@ def command():
                 speak("Enter the email to validate ")
                 email = input("Enter the email to validate ")
                 speak(validate(email))
+                engine.setProperty('rate',230)
+            
+            elif ("validate password" in query) or ("validate the password" in query) :
+                engine.setProperty('rate',190)
+                speak("Enter the password to validate ")
+                password = input("Enter the password to validate ")
+                speak(validatePassword(password))
                 engine.setProperty('rate',230)
 
             elif ("network speed" in query) or ("test speed" in query) or ("test network speed" in query) :

@@ -19,3 +19,31 @@ def passGen():
     for x in temp_pass_list:
         password+=x
     return password
+
+def validatePassword(password):
+    score = 0
+    if len(password) >= 8:
+        score += 1
+    if any(char.isupper() for char in password):
+        score += 1
+    if any(char.islower() for char in password):
+        score += 1
+    if any(char.isdigit() for char in password):
+        score += 1
+    if any(char in s4 for char in password):
+        score += 1
+    
+    # evaluate the password strength
+    if score <= 2:
+        return "Weak "
+    elif score == 3:
+        return "moderate"
+    elif score == 4:
+        return "good"
+    elif score >= 5:
+        return "Strong"
+    else:
+        return "Invalid"
+    
+        
+    
